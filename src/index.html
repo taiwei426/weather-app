@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;800&family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- <script src="https://kit.fontawesome.com/a225fc75b9.js" crossorigin="anonymous"></script> -->
+    <title>Weather</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class = "container">
+            <div class="left">
+                <div class="locations">
+                    <div class="title">Locations</div>
+                    <div class="location-wrapper">
+                        <div class="location-container" style="width: 900px">
+                            <div class="location-holder"></div>
+                            <div class="add-new-location"> </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="weekly-container">
+                    <div class="header">Weekly Forecast</div>
+                    <div class="weekly-table">
+                        <ul class="weekly-table-inner"></ul>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="right" >
+                <div class="location-date-container">
+                    <div class="big-location"></div>
+                    <div class = "date-holder"></div>
+                </div>
+                <div class="important-weather-container"></div>
+                <div class="secondary-weather-container"></div>
+                <div class="temp-chart-container">
+                    <div class="temp-chart-holder">
+                        <canvas id="temp-chart" style="position: relative; left: -2px"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="overlay">
+            <div class="overlay-container">
+                <div class="overlay-close-button"></div>
+                
+                <div class=overlay-holder>
+                    <div class="overlay-title">Weather Forecast</div>
+                    <form  autocomplete="off">
+                        <input id="location-search" class="location-search" placeholder="Search location" autofocus>
+                    </form>
+                    <ul class="location-search-results-container"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
