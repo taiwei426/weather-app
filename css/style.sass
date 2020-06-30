@@ -1,0 +1,507 @@
+$slate0: #fafcff
+$slate1: #f2f4f7
+$slate2: #d5dae0
+$slate3: #b3b7c4
+$slatedark: #51576d
+$slatedarker : #3B3D4A
+
+$gray: #7a7e8c    
+$blue: #476dd6
+$violet: #899CE2
+$violetlight: #bdc8f0
+$violetdark: #7F92D8
+$violetdarker: #6d81c9
+$yellow: #F1D277
+$yellowdark: #d6b44f
+$orange: #ed8a3e
+$tomato: #f57040
+
+$font-xlarge: 10rem
+$font-large: 4rem
+$font-big: 2rem    
+$font-medium: 1rem
+$font-small: .8rem
+
+$space-large: 4rem
+$space-bigger: 3rem
+$space-big: 2rem    
+$space-medium: 1rem
+$space-small: .5rem
+$space-tiny: .3rem
+
+$fast-transition: all 0.10s linear
+
+$bold: 800
+$regular: 400
+$medium: 500
+
+* 
+    margin: 0
+    padding: 0
+
+*,
+*::before,
+*::after 
+    box-sizing: inherit
+
+body
+    background-color: $slate1
+    font-family: 'Montserrat', sans-serif
+    font-weight: $medium
+
+.wrapper
+    position: relative
+    .overlay
+        position: fixed
+        z-index: 10
+        top: 0
+        left: 0
+        background: white
+        height: 100vh
+        width: 100vw
+        visibility: hidden
+        opacity: 0
+        transition: $fast-transition
+        
+        &.active
+            visibility: visible
+            opacity: 1
+        .overlay-container
+            position: relative
+            background: $violet
+            margin: $space-big
+            width: calc(100% - (#{$space-big} *2)) 
+            height: calc(100% - (#{$space-big} *2))
+            border-radius: $space-big 
+            display: flex 
+            justify-content: center
+            .overlay-close-button
+                width: $space-bigger
+                height: $space-bigger
+                border-radius:  $space-big
+                top: $space-medium
+                right: $space-medium
+                position: absolute
+                cursor: pointer
+                background-color: $violetdark
+                transition: $fast-transition
+                &:after, &:before
+                    content: ''
+                    position: absolute
+                    width: 24px
+                    height: 4px
+                    background: white
+                    top: 22px
+                    left: 12px
+                    border-radius: 3px
+                &:before
+                    transform: rotate(-45deg)
+                &:after
+                    transform: rotate(45deg)
+                &:hover
+                    transform: rotate(90deg)
+            .overlay-holder
+                display: flex
+                flex-direction: column
+                justify-content: center
+                width:  55%
+                transition: $fast-transition
+                .overlay-title
+                    color: $violetlight
+                    font-size: $font-big
+                    font-weight: $bold
+                    padding: $space-big
+                form
+                    position: relative
+                    display: flex
+                    justify-content: center
+                    .location-search
+                        font-size: $font-big
+                        font-weight: $bold
+                        border: none
+                        border-radius: $space-medium
+                        width: 100%
+                        padding: $space-big
+                        background: $violetdark
+                        color: white
+                        transition: $fast-transition
+                        &:focus
+                            outline: none
+                            box-shadow: inset 0 0 0 4px  $violetlight
+                        &::placeholder
+                            color: $violetdarker
+                    .loader
+                        left: auto
+                        right: $space-big
+                        top: $space-big
+                        background-color: $violetdarker
+                .location-search-results-container
+                    padding: $space-medium 0
+                    &:empty
+                        padding-bottom: 8rem
+                    .location-query-item
+                        color: white
+                        list-style-type: none
+                        padding: .75rem $space-big
+                        border-radius: $space-small
+                        transition: $fast-transition
+                        cursor: pointer
+                        &:hover
+                            background-color: $violetdark
+                        
+            
+
+
+
+.container
+    display: flex
+    height: 100vh
+    .right
+        overflow: hidden
+        margin: $space-big $space-big $space-big $space-medium
+        width: calc(50% - (#{$space-big} + #{$space-medium})) 
+        border-radius: $space-big
+        background-color: $yellow
+        background-size: cover
+        background-position: center
+        color: $slatedarker
+        display: flex
+        flex-direction: column
+        justify-content:  space-between
+        position: fixed
+        right: 0
+        top: 0
+        height: calc(100vh - (#{$space-big} * 2)) 
+        &.empty
+            color: $yellowdark
+            &:before, &:after
+                width: 100%
+                text-align: center
+                position: absolute
+            // &:before
+            //     content: 'No location selected.'
+            //     top: 45%
+            &:after
+                content: 'Add a location to see its weather.'
+                top: 50%
+        .loader 
+            background-color: $yellowdark
+        .location-name 
+            text-align: center
+    .left
+        width: 50%
+        .title
+            padding: $space-large $space-large $space-bigger
+            font-size: $font-big 
+            font-weight: $bold
+            
+
+.locations
+    margin: $space-big $space-medium $space-big $space-big
+    background: white
+    border-radius: $space-big
+    color: $slatedarker
+    
+
+.location-wrapper
+    overflow-x: scroll
+    .location-container
+        display: flex
+        .add-new-location
+            width: 10em
+            height: 13em
+            border-radius: 1em
+            position: relative
+            color: $slate2
+            cursor: pointer
+            background: $slate1
+            transition: $fast-transition
+            margin-bottom: $space-large
+            margin-right: $space-large
+            box-shadow: inset 0 0 0 3px $slate1
+            &::after
+                content: '+'
+                font-size: $font-large
+                position: absolute
+                top: 50%
+                left: 50%
+                transform: translate(-50%, -50%)
+            &:hover
+                background: white
+                box-shadow: inset 0 0 0 3px $slate2
+        .location-holder
+            display: flex
+            padding: 0 0 $space-large $space-large
+            color: $slatedarker
+            .location-item
+                width: 10em
+                cursor: pointer
+                margin-right: $space-big
+                position: relative
+                &.active
+                    .image-holder
+                        box-shadow: inset 0 0 0 4px $yellow
+                        filter: grayscale(0)
+                &:hover
+                    .delete-location
+                        visibility: visible
+                        opacity: 1
+                    .image-holder
+                        filter: grayscale(0)
+                .delete-location
+                    transition: $fast-transition
+                    visibility: hidden
+                    opacity: 0
+                    width: $space-big
+                    height: $space-big
+                    position: absolute
+                    right: .75rem
+                    top:  .75rem
+                    z-index: 1
+                    &:after
+                        content: ''
+                        width: 100%
+                        height: 100%
+                        border-radius: $space-medium
+                        background: white
+                        position: absolute
+                        opacity: .5
+                    &:hover 
+                        &:after
+                            opacity: 1
+                        svg
+                            fill: $tomato
+                    svg
+                        width: 1rem
+                        height: 1rem
+                        position: absolute
+                        left: 50%
+                        top: 50%
+                        transform: translate(-50%, -50%)
+                        fill: $slatedark
+                        transition: $fast-transition
+                        z-index: 1
+                .image-holder
+                    border-radius: $space-medium
+                    width: 100%
+                    height: 13em
+                    background-size: cover
+                    background-position: center
+                    background-color: $slate1
+                    filter: grayscale(1)
+                    transition: $fast-transition
+                .location-info
+                    padding-top: $space-medium
+                    .location-name 
+                        font-size: $font-medium
+                        font-weight: $bold
+                        text-transform: capitalize
+                   
+
+
+.weekly-container 
+    position: relative
+    margin: $space-big $space-medium $space-big $space-big
+    padding: $space-large
+    // min-height: calc(16% - #{$space-medium}) 
+    min-height: 29%
+    color: white
+    background: $slatedarker
+    border-radius: $space-big
+    &.empty 
+        &:before, &:after
+            color: $slatedark
+            width: calc(100% - 8rem)
+            text-align: center
+            position: absolute
+        &:after
+            content: 'Add a location to see its weather.'
+            top: 50%
+    .loader
+        background-color: $slatedark
+    .header
+        font-size: $font-big
+        padding-bottom: $space-big
+        font-weight: $bold
+    .weekly-table  
+        .date-line
+            display: flex 
+            &:first-child
+                margin-top: 0
+            svg
+                width: 1.5rem
+                height: 1.5rem
+                &#clear-day
+                    fill: $yellow
+                &#rain, &#cloudy
+                    fill: $violet
+                &#snow
+                    fill: white
+                #sun
+                    fill: $yellow
+                #cloud
+                    fill: $violet
+            .date
+                position: relative
+                padding: 1.2rem $space-medium 1.2rem 0
+                width: calc(16% - #{$space-medium}) 
+            .weather
+                padding: 1.2rem $space-medium
+                width: calc(17% - (#{$space-medium} * 2)) 
+                text-align: center
+            .precipitation
+                padding: 1.2rem 0 1.2rem $space-big
+                width: calc(15% - 2rem) 
+                text-align: center
+                display: flex
+                svg
+                    margin-right: $space-tiny   
+                    fill: $slate3
+                    width: $space-medium
+            .temp-low
+                width: calc(15% - (#{$space-big} + #{$space-small})) 
+                padding: 1.2rem $space-small $space-big 1.2rem
+                text-align: right
+            .temp-high
+                width: calc(7% - #{$space-small}) 
+                padding: 1.2rem 0 1.2rem $space-small
+            .temp-bar-container
+                width: 30%
+                display: flex
+                justify-content: center
+                .temp-low-bar-holder, .temp-high-bar-holder
+                    position: relative
+                    width: 42% 
+                    &:after
+                        content: ''
+                        position: absolute
+                        height: .5rem
+                        width: 100%  
+                        top: 40%
+                        // background-color: $slate2
+                    .bar
+                        position: absolute
+                        height: 1rem
+                        width: 10%
+                        top: 30%
+                        z-index: 1
+                .temp-high-bar-holder
+                    .bar
+                        background: rgb(186,181,176)
+                        background: linear-gradient(90deg, rgba(186,181,176,1) 0%, rgba(238,209,122,1) 80%)
+                        border-radius: 0 $space-small $space-small 0 
+                .temp-low-bar-holder
+                    box-shadow: inset -2px 0 0 0 $slatedark
+                    &:after
+                        right: 0
+                    .bar
+                        right: 0
+                        background: rgb(186,181,176)
+                        background: linear-gradient(-90deg, rgba(186,181,176,1) 0%, rgba(137,156,226,1) 80%)
+                        border-radius: $space-small 0 0 $space-small
+               
+
+.location-date-container
+    padding: $space-large $space-large 0 $space-large
+    display: flex
+    justify-content: space-between
+    .big-location
+        font-weight: $bold
+        font-size: $font-large
+    .date-holder
+        padding-top: $space-small
+        text-align: right
+        display: flex
+        flex-direction: column
+        .today
+            font-size: $font-big
+            font-weight: $bold
+
+.important-weather-container
+    display: flex
+    padding: 0 $space-large
+    justify-content: space-between
+    .temperature-right-holder
+        display: flex
+        flex-direction: column
+        justify-content: center
+        #weather-icon 
+            margin-left: auto
+            width: $space-large
+            height: $space-large
+            padding-bottom: $space-small
+            fill: currentColor
+        .weather-description
+            font-size: $font-big
+            text-align: right
+        .temp-interval
+            padding: $space-small 0 0
+            svg
+                width: 1em
+                height: 1em
+                fill: currentColor
+            span:last-child
+                margin-left: $space-small
+    .temperature-holder        
+        .current-temperature
+            font-size: $font-xlarge
+            font-weight: $bold
+            display: inline
+        em
+            font-size: $font-large
+            vertical-align: top
+            font-style: normal
+            position: relative
+            top: $space-big
+
+
+.secondary-weather-container
+    padding: 0 $space-large
+    display: flex
+    justify-content: space-between
+    .column
+        display: flex
+        flex-direction: column
+        &:last-child
+            text-align: right
+        .secondary-info
+            span
+                font-weight: $bold
+.temp-chart-container
+    position: relative 
+    height: 300px
+    width: 100%
+    overflow-x: scroll
+    // padding-bottom: $space-medium
+    .temp-chart-holder
+        position: relative
+        height: 300px
+        width: 250%
+    // width: calc(100% - #{$space-large * 2}) 
+    // padding: 0 4em 
+
+
+.loader 
+    // margin: 0 auto
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    position: absolute
+    width: 2rem
+    height: 2rem
+    border-radius: .5rem
+    background: white
+    animation: loader 1.5s infinite ease-in-out
+    
+
+
+@keyframes loader
+	0% 
+		transform: perspective(120px) rotateX(0deg) rotateY(0deg)
+	
+	50% 
+		transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg)
+	
+	100% 
+		transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+	

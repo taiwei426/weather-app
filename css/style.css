@@ -1,0 +1,747 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+}
+
+body {
+  background-color: #f2f4f7;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+}
+
+.wrapper {
+  position: relative;
+}
+
+.wrapper .overlay {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  background: white;
+  height: 100vh;
+  width: 100vw;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: all 0.1s linear;
+  transition: all 0.1s linear;
+}
+
+.wrapper .overlay.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.wrapper .overlay .overlay-container {
+  position: relative;
+  background: #899CE2;
+  margin: 2rem;
+  width: calc(100% - (2rem *2));
+  height: calc(100% - (2rem *2));
+  border-radius: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.wrapper .overlay .overlay-container .overlay-close-button {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 2rem;
+  top: 1rem;
+  right: 1rem;
+  position: absolute;
+  cursor: pointer;
+  background-color: #7F92D8;
+  -webkit-transition: all 0.1s linear;
+  transition: all 0.1s linear;
+}
+
+.wrapper .overlay .overlay-container .overlay-close-button:after, .wrapper .overlay .overlay-container .overlay-close-button:before {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 4px;
+  background: white;
+  top: 22px;
+  left: 12px;
+  border-radius: 3px;
+}
+
+.wrapper .overlay .overlay-container .overlay-close-button:before {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.wrapper .overlay .overlay-container .overlay-close-button:after {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.wrapper .overlay .overlay-container .overlay-close-button:hover {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+.wrapper .overlay .overlay-container .overlay-holder {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 55%;
+  -webkit-transition: all 0.1s linear;
+  transition: all 0.1s linear;
+}
+
+.wrapper .overlay .overlay-container .overlay-holder .overlay-title {
+  color: #bdc8f0;
+  font-size: 2rem;
+  font-weight: 800;
+  padding: 2rem;
+}
+
+.wrapper .overlay .overlay-container .overlay-holder form {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.wrapper .overlay .overlay-container .overlay-holder form .location-search {
+  font-size: 2rem;
+  font-weight: 800;
+  border: none;
+  border-radius: 1rem;
+  width: 100%;
+  padding: 2rem;
+  background: #7F92D8;
+  color: white;
+  -webkit-transition: all 0.1s linear;
+  transition: all 0.1s linear;
+}
+
+.wrapper .overlay .overlay-container .overlay-holder form .location-search:focus {
+  outline: none;
+  -webkit-box-shadow: inset 0 0 0 4px #bdc8f0;
+          box-shadow: inset 0 0 0 4px #bdc8f0;
+}
+
+.wrapper .overlay .overlay-container .overlay-holder form .location-search::-webkit-input-placeholder {
+  color: #6d81c9;
+}
+
+.wrapper .overlay .overlay-container .overlay-holder form .location-search:-ms-input-placeholder {
+  color: #6d81c9;
+}
+
+.wrapper .overlay .overlay-container .overlay-holder form .location-search::-ms-input-placeholder {
+  color: #6d81c9;
+}
+
+.wrapper .overlay .overlay-container .overlay-holder form .location-search::placeholder {
+  color: #6d81c9;
+}
+
+.wrapper .overlay .overlay-container .overlay-holder form .loader {
+  left: auto;
+  right: 2rem;
+  top: 2rem;
+  background-color: #6d81c9;
+}
+
+.wrapper .overlay .overlay-container .overlay-holder .location-search-results-container {
+  padding: 1rem 0;
+}
+
+.wrapper .overlay .overlay-container .overlay-holder .location-search-results-container:empty {
+  padding-bottom: 8rem;
+}
+
+.wrapper .overlay .overlay-container .overlay-holder .location-search-results-container .location-query-item {
+  color: white;
+  list-style-type: none;
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  -webkit-transition: all 0.1s linear;
+  transition: all 0.1s linear;
+  cursor: pointer;
+}
+
+.wrapper .overlay .overlay-container .overlay-holder .location-search-results-container .location-query-item:hover {
+  background-color: #7F92D8;
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100vh;
+}
+
+.container .right {
+  overflow: hidden;
+  margin: 2rem 2rem 2rem 1rem;
+  width: calc(50% - (2rem + 1rem));
+  border-radius: 2rem;
+  background-color: #F1D277;
+  background-size: cover;
+  background-position: center;
+  color: #3B3D4A;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: calc(100vh - (2rem * 2));
+}
+
+.container .right.empty {
+  color: #d6b44f;
+}
+
+.container .right.empty:before, .container .right.empty:after {
+  width: 100%;
+  text-align: center;
+  position: absolute;
+}
+
+.container .right.empty:after {
+  content: 'Add a location to see its weather.';
+  top: 50%;
+}
+
+.container .right .loader {
+  background-color: #d6b44f;
+}
+
+.container .right .location-name {
+  text-align: center;
+}
+
+.container .left {
+  width: 50%;
+}
+
+.container .left .title {
+  padding: 4rem 4rem 3rem;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.locations {
+  margin: 2rem 1rem 2rem 2rem;
+  background: white;
+  border-radius: 2rem;
+  color: #3B3D4A;
+}
+
+.location-wrapper {
+  overflow-x: scroll;
+}
+
+.location-wrapper .location-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.location-wrapper .location-container .add-new-location {
+  width: 10em;
+  height: 13em;
+  border-radius: 1em;
+  position: relative;
+  color: #d5dae0;
+  cursor: pointer;
+  background: #f2f4f7;
+  -webkit-transition: all 0.1s linear;
+  transition: all 0.1s linear;
+  margin-bottom: 4rem;
+  margin-right: 4rem;
+  -webkit-box-shadow: inset 0 0 0 3px #f2f4f7;
+          box-shadow: inset 0 0 0 3px #f2f4f7;
+}
+
+.location-wrapper .location-container .add-new-location::after {
+  content: '+';
+  font-size: 4rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.location-wrapper .location-container .add-new-location:hover {
+  background: white;
+  -webkit-box-shadow: inset 0 0 0 3px #d5dae0;
+          box-shadow: inset 0 0 0 3px #d5dae0;
+}
+
+.location-wrapper .location-container .location-holder {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0 0 4rem 4rem;
+  color: #3B3D4A;
+}
+
+.location-wrapper .location-container .location-holder .location-item {
+  width: 10em;
+  cursor: pointer;
+  margin-right: 2rem;
+  position: relative;
+}
+
+.location-wrapper .location-container .location-holder .location-item.active .image-holder {
+  -webkit-box-shadow: inset 0 0 0 4px #F1D277;
+          box-shadow: inset 0 0 0 4px #F1D277;
+  -webkit-filter: grayscale(0);
+          filter: grayscale(0);
+}
+
+.location-wrapper .location-container .location-holder .location-item:hover .delete-location {
+  visibility: visible;
+  opacity: 1;
+}
+
+.location-wrapper .location-container .location-holder .location-item:hover .image-holder {
+  -webkit-filter: grayscale(0);
+          filter: grayscale(0);
+}
+
+.location-wrapper .location-container .location-holder .location-item .delete-location {
+  -webkit-transition: all 0.1s linear;
+  transition: all 0.1s linear;
+  visibility: hidden;
+  opacity: 0;
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  right: .75rem;
+  top: .75rem;
+  z-index: 1;
+}
+
+.location-wrapper .location-container .location-holder .location-item .delete-location:after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  background: white;
+  position: absolute;
+  opacity: .5;
+}
+
+.location-wrapper .location-container .location-holder .location-item .delete-location:hover:after {
+  opacity: 1;
+}
+
+.location-wrapper .location-container .location-holder .location-item .delete-location:hover svg {
+  fill: #f57040;
+}
+
+.location-wrapper .location-container .location-holder .location-item .delete-location svg {
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  fill: #51576d;
+  -webkit-transition: all 0.1s linear;
+  transition: all 0.1s linear;
+  z-index: 1;
+}
+
+.location-wrapper .location-container .location-holder .location-item .image-holder {
+  border-radius: 1rem;
+  width: 100%;
+  height: 13em;
+  background-size: cover;
+  background-position: center;
+  background-color: #f2f4f7;
+  -webkit-filter: grayscale(1);
+          filter: grayscale(1);
+  -webkit-transition: all 0.1s linear;
+  transition: all 0.1s linear;
+}
+
+.location-wrapper .location-container .location-holder .location-item .location-info {
+  padding-top: 1rem;
+}
+
+.location-wrapper .location-container .location-holder .location-item .location-info .location-name {
+  font-size: 1rem;
+  font-weight: 800;
+  text-transform: capitalize;
+}
+
+.weekly-container {
+  position: relative;
+  margin: 2rem 1rem 2rem 2rem;
+  padding: 4rem;
+  min-height: 29%;
+  color: white;
+  background: #3B3D4A;
+  border-radius: 2rem;
+}
+
+.weekly-container.empty:before, .weekly-container.empty:after {
+  color: #51576d;
+  width: calc(100% - 8rem);
+  text-align: center;
+  position: absolute;
+}
+
+.weekly-container.empty:after {
+  content: 'Add a location to see its weather.';
+  top: 50%;
+}
+
+.weekly-container .loader {
+  background-color: #51576d;
+}
+
+.weekly-container .header {
+  font-size: 2rem;
+  padding-bottom: 2rem;
+  font-weight: 800;
+}
+
+.weekly-container .weekly-table .date-line {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.weekly-container .weekly-table .date-line:first-child {
+  margin-top: 0;
+}
+
+.weekly-container .weekly-table .date-line svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.weekly-container .weekly-table .date-line svg#clear-day {
+  fill: #F1D277;
+}
+
+.weekly-container .weekly-table .date-line svg#rain, .weekly-container .weekly-table .date-line svg#cloudy {
+  fill: #899CE2;
+}
+
+.weekly-container .weekly-table .date-line svg#snow {
+  fill: white;
+}
+
+.weekly-container .weekly-table .date-line svg #sun {
+  fill: #F1D277;
+}
+
+.weekly-container .weekly-table .date-line svg #cloud {
+  fill: #899CE2;
+}
+
+.weekly-container .weekly-table .date-line .date {
+  position: relative;
+  padding: 1.2rem 1rem 1.2rem 0;
+  width: calc(16% - 1rem);
+}
+
+.weekly-container .weekly-table .date-line .weather {
+  padding: 1.2rem 1rem;
+  width: calc(17% - (1rem * 2));
+  text-align: center;
+}
+
+.weekly-container .weekly-table .date-line .precipitation {
+  padding: 1.2rem 0 1.2rem 2rem;
+  width: calc(15% - 2rem);
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.weekly-container .weekly-table .date-line .precipitation svg {
+  margin-right: 0.3rem;
+  fill: #b3b7c4;
+  width: 1rem;
+}
+
+.weekly-container .weekly-table .date-line .temp-low {
+  width: calc(15% - (2rem + 0.5rem));
+  padding: 1.2rem 0.5rem 2rem 1.2rem;
+  text-align: right;
+}
+
+.weekly-container .weekly-table .date-line .temp-high {
+  width: calc(7% - 0.5rem);
+  padding: 1.2rem 0 1.2rem 0.5rem;
+}
+
+.weekly-container .weekly-table .date-line .temp-bar-container {
+  width: 30%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.weekly-container .weekly-table .date-line .temp-bar-container .temp-low-bar-holder, .weekly-container .weekly-table .date-line .temp-bar-container .temp-high-bar-holder {
+  position: relative;
+  width: 42%;
+}
+
+.weekly-container .weekly-table .date-line .temp-bar-container .temp-low-bar-holder:after, .weekly-container .weekly-table .date-line .temp-bar-container .temp-high-bar-holder:after {
+  content: '';
+  position: absolute;
+  height: .5rem;
+  width: 100%;
+  top: 40%;
+}
+
+.weekly-container .weekly-table .date-line .temp-bar-container .temp-low-bar-holder .bar, .weekly-container .weekly-table .date-line .temp-bar-container .temp-high-bar-holder .bar {
+  position: absolute;
+  height: 1rem;
+  width: 10%;
+  top: 30%;
+  z-index: 1;
+}
+
+.weekly-container .weekly-table .date-line .temp-bar-container .temp-high-bar-holder .bar {
+  background: #bab5b0;
+  background: -webkit-gradient(linear, left top, right top, from(#bab5b0), color-stop(80%, #eed17a));
+  background: linear-gradient(90deg, #bab5b0 0%, #eed17a 80%);
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+
+.weekly-container .weekly-table .date-line .temp-bar-container .temp-low-bar-holder {
+  -webkit-box-shadow: inset -2px 0 0 0 #51576d;
+          box-shadow: inset -2px 0 0 0 #51576d;
+}
+
+.weekly-container .weekly-table .date-line .temp-bar-container .temp-low-bar-holder:after {
+  right: 0;
+}
+
+.weekly-container .weekly-table .date-line .temp-bar-container .temp-low-bar-holder .bar {
+  right: 0;
+  background: #bab5b0;
+  background: -webkit-gradient(linear, right top, left top, from(#bab5b0), color-stop(80%, #899ce2));
+  background: linear-gradient(-90deg, #bab5b0 0%, #899ce2 80%);
+  border-radius: 0.5rem 0 0 0.5rem;
+}
+
+.location-date-container {
+  padding: 4rem 4rem 0 4rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.location-date-container .big-location {
+  font-weight: 800;
+  font-size: 4rem;
+}
+
+.location-date-container .date-holder {
+  padding-top: 0.5rem;
+  text-align: right;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.location-date-container .date-holder .today {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.important-weather-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0 4rem;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.important-weather-container .temperature-right-holder {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.important-weather-container .temperature-right-holder #weather-icon {
+  margin-left: auto;
+  width: 4rem;
+  height: 4rem;
+  padding-bottom: 0.5rem;
+  fill: currentColor;
+}
+
+.important-weather-container .temperature-right-holder .weather-description {
+  font-size: 2rem;
+  text-align: right;
+}
+
+.important-weather-container .temperature-right-holder .temp-interval {
+  padding: 0.5rem 0 0;
+}
+
+.important-weather-container .temperature-right-holder .temp-interval svg {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+}
+
+.important-weather-container .temperature-right-holder .temp-interval span:last-child {
+  margin-left: 0.5rem;
+}
+
+.important-weather-container .temperature-holder .current-temperature {
+  font-size: 10rem;
+  font-weight: 800;
+  display: inline;
+}
+
+.important-weather-container .temperature-holder em {
+  font-size: 4rem;
+  vertical-align: top;
+  font-style: normal;
+  position: relative;
+  top: 2rem;
+}
+
+.secondary-weather-container {
+  padding: 0 4rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.secondary-weather-container .column {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.secondary-weather-container .column:last-child {
+  text-align: right;
+}
+
+.secondary-weather-container .column .secondary-info span {
+  font-weight: 800;
+}
+
+.temp-chart-container {
+  position: relative;
+  height: 300px;
+  width: 100%;
+  overflow-x: scroll;
+}
+
+.temp-chart-container .temp-chart-holder {
+  position: relative;
+  height: 300px;
+  width: 250%;
+}
+
+.loader {
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  border-radius: .5rem;
+  background: white;
+  -webkit-animation: loader 1.5s infinite ease-in-out;
+          animation: loader 1.5s infinite ease-in-out;
+}
+
+@-webkit-keyframes loader {
+  0% {
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+            transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+  }
+  50% {
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+            transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+  }
+  100% {
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+            transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
+}
+
+@keyframes loader {
+  0% {
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+            transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+  }
+  50% {
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+            transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+  }
+  100% {
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+            transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
+}
+/*# sourceMappingURL=style.css.map */
