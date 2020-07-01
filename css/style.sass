@@ -44,6 +44,9 @@ $medium: 500
 *::after 
     box-sizing: inherit
 
+
+html
+    font-size: 17px
 body
     background-color: $slate1
     font-family: 'Montserrat', sans-serif
@@ -82,6 +85,7 @@ body
                 top: $space-medium
                 right: $space-medium
                 position: absolute
+                z-index: 1
                 cursor: pointer
                 background-color: $violetdark
                 transition: $fast-transition
@@ -91,8 +95,8 @@ body
                     width: 24px
                     height: 4px
                     background: white
-                    top: 22px
-                    left: 12px
+                    top: 1.35rem
+                    left: .65rem
                     border-radius: 3px
                 &:before
                     transform: rotate(-45deg)
@@ -106,11 +110,14 @@ body
                 justify-content: center
                 width:  55%
                 transition: $fast-transition
+                position: relative
+                height: initial
                 .overlay-title
                     color: $violetlight
                     font-size: $font-big
                     font-weight: $bold
                     padding: $space-big
+                    position: relative
                 form
                     position: relative
                     display: flex
@@ -137,6 +144,8 @@ body
                         background-color: $violetdarker
                 .location-search-results-container
                     padding: $space-medium 0
+                    position: relative
+                    overflow: scroll
                     &:empty
                         padding-bottom: 8rem
                     .location-query-item
@@ -504,4 +513,66 @@ body
 	
 	100% 
 		transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
-	
+
+
+@media(max-width: 1300px)
+    html
+        font-size: 14px
+    .weekly-container .weekly-table .date-line 
+        .date
+            width: calc(22% - 1rem)
+        .precipitation
+            padding: 1.2rem 0 1.2rem 0
+            width: 15%
+        .temp-bar-container
+            width: 24%
+@media(max-width: 1000px)
+    html
+        font-size: 12px
+    
+@media(max-width: 812px)
+    html
+        font-size: 14px
+    .container
+        flex-wrap: wrap
+        height: inherit
+        .left
+            width: 100%
+            position: relative
+            .weekly-container, 
+            .locations
+                margin-right: 2rem
+        
+        .right
+            width: calc(100% - 4rem)  
+            margin: 0 2rem 2rem 2rem
+            position: relative
+            height: inherit
+@media(max-width: 414px)
+    html
+        font-size: 12px
+    .container .left .weekly-container
+        padding: 2rem
+    .container .left .locations
+        .title
+            padding: 2rem 2rem 1.5rem
+    .location-wrapper .location-container .location-holder
+        padding: 0 0 2rem 2rem
+    .location-date-container
+        flex-wrap: wrap
+        padding: 2rem 2rem 0 2rem
+        .date-holder
+            text-align: left
+    .important-weather-container
+        padding: 0 2rem
+    .secondary-weather-container
+        padding: 0 2rem
+    .wrapper .overlay .overlay-container 
+        .overlay-holder
+            width: calc(100% - 4rem)
+        .overlay-close-button
+            &::after,
+            &::before
+                left: .5rem
+    
+    
