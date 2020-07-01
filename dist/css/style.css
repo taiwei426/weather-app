@@ -10,6 +10,10 @@
           box-sizing: inherit;
 }
 
+html {
+  font-size: 17px;
+}
+
 body {
   background-color: #f2f4f7;
   font-family: 'Montserrat', sans-serif;
@@ -61,6 +65,7 @@ body {
   top: 1rem;
   right: 1rem;
   position: absolute;
+  z-index: 1;
   cursor: pointer;
   background-color: #7F92D8;
   -webkit-transition: all 0.1s linear;
@@ -73,8 +78,8 @@ body {
   width: 24px;
   height: 4px;
   background: white;
-  top: 22px;
-  left: 12px;
+  top: 1.35rem;
+  left: .65rem;
   border-radius: 3px;
 }
 
@@ -107,6 +112,8 @@ body {
   width: 55%;
   -webkit-transition: all 0.1s linear;
   transition: all 0.1s linear;
+  position: relative;
+  height: initial;
 }
 
 .wrapper .overlay .overlay-container .overlay-holder .overlay-title {
@@ -114,6 +121,7 @@ body {
   font-size: 2rem;
   font-weight: 800;
   padding: 2rem;
+  position: relative;
 }
 
 .wrapper .overlay .overlay-container .overlay-holder form {
@@ -170,6 +178,8 @@ body {
 
 .wrapper .overlay .overlay-container .overlay-holder .location-search-results-container {
   padding: 1rem 0;
+  position: relative;
+  overflow: scroll;
 }
 
 .wrapper .overlay .overlay-container .overlay-holder .location-search-results-container:empty {
@@ -742,6 +752,88 @@ body {
   100% {
     -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
             transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
+}
+
+@media (max-width: 1300px) {
+  html {
+    font-size: 14px;
+  }
+  .weekly-container .weekly-table .date-line .date {
+    width: calc(22% - 1rem);
+  }
+  .weekly-container .weekly-table .date-line .precipitation {
+    padding: 1.2rem 0 1.2rem 0;
+    width: 15%;
+  }
+  .weekly-container .weekly-table .date-line .temp-bar-container {
+    width: 24%;
+  }
+}
+
+@media (max-width: 1000px) {
+  html {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 812px) {
+  html {
+    font-size: 14px;
+  }
+  .container {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    height: inherit;
+  }
+  .container .left {
+    width: 100%;
+    position: relative;
+  }
+  .container .left .weekly-container,
+  .container .left .locations {
+    margin-right: 2rem;
+  }
+  .container .right {
+    width: calc(100% - 4rem);
+    margin: 0 2rem 2rem 2rem;
+    position: relative;
+    height: inherit;
+  }
+}
+
+@media (max-width: 414px) {
+  html {
+    font-size: 12px;
+  }
+  .container .left .weekly-container {
+    padding: 2rem;
+  }
+  .container .left .locations .title {
+    padding: 2rem 2rem 1.5rem;
+  }
+  .location-wrapper .location-container .location-holder {
+    padding: 0 0 2rem 2rem;
+  }
+  .location-date-container {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    padding: 2rem 2rem 0 2rem;
+  }
+  .location-date-container .date-holder {
+    text-align: left;
+  }
+  .important-weather-container {
+    padding: 0 2rem;
+  }
+  .secondary-weather-container {
+    padding: 0 2rem;
+  }
+  .wrapper .overlay .overlay-container .overlay-holder {
+    width: calc(100% - 4rem);
+  }
+  .wrapper .overlay .overlay-container .overlay-close-button::after, .wrapper .overlay .overlay-container .overlay-close-button::before {
+    left: .5rem;
   }
 }
 /*# sourceMappingURL=style.css.map */
