@@ -12,7 +12,7 @@ export default class GetDate{
         var usersDay = new Date();
         this.usersDay  = usersDay.getDay();
         
-        var day = await axios(`http://worldtimeapi.org/api/timezone/${this.timezone}`)
+        var day = await axios(`https://cors-anywhere.herokuapp.com/http://worldtimeapi.org/api/timezone/${this.timezone}`)
         
         this.day = day.data.day_of_week;
         this.date = day.data.datetime;

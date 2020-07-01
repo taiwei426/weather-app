@@ -9,7 +9,7 @@ export default  class Weather{
 
         var weather;
 
-        await axios.get(`https://api.darksky.net/forecast/${darkSkiesToken}/${lat}, ${lon}`, {
+        await axios.get(`https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/${darkSkiesToken}/${lat}, ${lon}`, {
             crossDomain: true // doesn't do anything
         }).then(response => {
             weather = response.data

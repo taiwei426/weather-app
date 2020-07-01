@@ -21,7 +21,7 @@ export default class GetLocation{
         // var randomNum = Math.floor(Math.random() * 2)
         var query = queryNameArr[0]
     
-        var photos = await axios.get(`https://api.unsplash.com/search/photos/?page=1&per_page=10&query=${query}&client_id=${unsplashAccessKey}`)
+        var photos = await axios.get(`https://cors-anywhere.herokuapp.com/https://api.unsplash.com/search/photos/?page=1&per_page=10&query=${query}&client_id=${unsplashAccessKey}`)
         
         this.photo = photos.data.results[0].urls.small;
 
