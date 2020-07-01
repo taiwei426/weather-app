@@ -31,7 +31,7 @@ function showPrimaryWeather (current) {
         <div class="temperature-right-holder">
 
             <svg id="weather-icon">
-                <use href="img/_svgs.svg#${current.icon}"></use>
+                <use href="img/svgs.svg#${current.icon}"></use>
             </svg>
         
             <div class = "weather-description">${current.summary}</div>

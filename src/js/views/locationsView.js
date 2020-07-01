@@ -7,7 +7,7 @@ const renderLocationCard = (location) => {
         <div class="location-item active" >
             <div class="delete-location">
                 <svg id="trash">
-                    <use href="img/_svgs.svg#trash"></use>
+                    <use href="img/svgs.svg#trash"></use>
                 </svg>
             </div>
             <div class="image-holder" style="background-image: url('${location.photo}')"></div>

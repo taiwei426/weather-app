@@ -55,13 +55,13 @@ export const showWeekWeather = (daily, day, localDay) => {
                 <div class="date">${i === 0 ? showTodayOrTmrw(day, localDay) : dayOfWeek(day, i)}</div>
                 <div class="weather">
                     <svg id="${el.icon}">
-                        <use href="img/_svgs.svg#${el.icon}"></use>
+                        <use href="img/svgs.svg#${el.icon}"></use>
                     </svg>
                     
                 </div>
                 <div class="precipitation">
                     <svg>
-                        <use href="img/_svgs.svg#raindrop"></use>
+                        <use href="img/svgs.svg#raindrop"></use>
                     </svg>
 
                     ${Math.round(el.precipProbability * 100)}%
