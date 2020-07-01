@@ -574,5 +574,24 @@ body
             &::after,
             &::before
                 left: .5rem
+.links
+    position: fixed
+    bottom: .5rem
+    right: 4rem
+    font-size: 1rem
+    a
+        color: $slate3
+        text-decoration: none
+        transition: $fast-transition
+        &:first-child
+            margin-right: 1rem
+        &:hover
+            color: $slatedark
+    @media(max-width: 812px)
+        position: relative
+        padding-left: 4rem
+        right: 0
+        padding-bottom: 1rem
+
     
     

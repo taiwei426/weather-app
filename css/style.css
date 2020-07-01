@@ -836,4 +836,35 @@ body {
     left: .5rem;
   }
 }
+
+.links {
+  position: fixed;
+  bottom: .5rem;
+  right: 4rem;
+  font-size: 1rem;
+}
+
+.links a {
+  color: #b3b7c4;
+  text-decoration: none;
+  -webkit-transition: all 0.1s linear;
+  transition: all 0.1s linear;
+}
+
+.links a:first-child {
+  margin-right: 1rem;
+}
+
+.links a:hover {
+  color: #51576d;
+}
+
+@media (max-width: 812px) {
+  .links {
+    position: relative;
+    padding-left: 4rem;
+    right: 0;
+    padding-bottom: 1rem;
+  }
+}
 /*# sourceMappingURL=style.css.map */
