@@ -22,7 +22,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
-    "chart.js": "^2.9.3",
+    "chart.js": "^2.9.4",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.28",
     "unsplash-js": "^6.0.0"
